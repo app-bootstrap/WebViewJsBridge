@@ -33,7 +33,7 @@ var $ = function(selector) {
 var callback = function() {
   $('#pushView').addEventListener('click', function() {
     JSBridge.invoke('pushView', {
-      url: 'index.html'
+      url: 'file:///android_asset/index.html'
     });
   }, false);
   $('#popView').addEventListener('click', function() {
@@ -44,7 +44,7 @@ var callback = function() {
   }, false);
 };
 
-if (JSBridge) {
+if (typeof JSBridge !== 'undefined') {
   callback();
 } else {
   document.addEventListener('JSBridgeReady', function() {

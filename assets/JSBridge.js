@@ -39,7 +39,6 @@
 
   methods.pushView = function() {
     var args = Util.slice.call(arguments);
-
     _exec('pushView', args[0][0]);
   };
 

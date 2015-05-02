@@ -31,17 +31,21 @@ public class WebViewActivity extends Activity implements Callback,
 	private static final String PREFIX = TAG + "://";
 	private static final String BLANK = "";
 	private static final String JSFILENAME = "JSBridge.js";
-	private static String DISTURL = "";
+	private String distUrl = "";
 	private Button leftButton;
 	private TextView title;
 	private WebView webView;
+	private int isShow = View.VISIBLE;
+	private String leftText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Intent intent = getIntent();
-		DISTURL = "file:///android_asset/" + intent.getStringExtra("url");
 
+		Intent intent = getIntent();
+		if (distUrl == null || distUrl.equals("")) {
+			distUrl = intent.getStringExtra("url");
+		}
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.activity_webview);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
@@ -49,11 +53,28 @@ public class WebViewActivity extends Activity implements Callback,
 		Log.i(TAG, "start loading...");
 	}
 
+	public void setDistUrl(String distUrl) {
+		this.distUrl = distUrl;
+	}
+
+	public void hideLeftButton() {
+		isShow = View.INVISIBLE;
+	}
+	
+	public void setLeftText(String text) {
+		leftText = text;
+	}
+
 	public void initView() {
 		leftButton = (Button) findViewById(R.id.button_first);
 		leftButton.setOnClickListener(this);
-		leftButton.setVisibility(View.VISIBLE);
+		leftButton.setVisibility(isShow);
 		title = (TextView) findViewById(R.id.title);
+
+		if (leftText != null) {
+			leftButton.setText(leftText);
+		}
+
 		initWebview();
 	}
 
@@ -155,7 +176,7 @@ public class WebViewActivity extends Activity implements Callback,
 			bufferedReader.close();
 			in.close();
 			webView.loadUrl("javascript:" + sb.toString());
-			webView.loadUrl(DISTURL);
+			webView.loadUrl(distUrl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
