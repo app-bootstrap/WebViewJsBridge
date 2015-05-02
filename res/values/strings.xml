@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">jsbridge</string>
+    <string name="back_name">back</string>
+    <string name="history_name">history</string>
+    <string name="placeholder">loading&#8230;</string>
+</resources>

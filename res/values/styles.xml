@@ -1,0 +1,19 @@
+<resources>
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+    </style>
+    <style name="activityAnimation" parent="AppTheme">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+    <style name="Dialog_Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/dialog_background</item>
+    </style>
+</resources>
