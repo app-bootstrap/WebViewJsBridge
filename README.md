@@ -1,11 +1,10 @@
-WebViewJsBridge
-===============
+# WebViewJsBridge
 
 An Android bridge between Java and JavaScript.
 
 ## Usage
 
-```javascript
+``` javascript
 
 var $ = function(selector) {
   return document.querySelector(selector);
@@ -34,7 +33,7 @@ if (typeof JSBridge !== 'undefined') {
 
 ```
 
-```java
+``` java
 
 setDistUrl("file:///android_asset/index.html");
 
